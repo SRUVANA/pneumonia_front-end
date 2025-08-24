@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Pneumonia - PulmoScan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-lungs"></i>
+                <span>PulmoScan</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="predict.html" class="nav-link active">Predict Pneumonia</a>
+                <a href="about.html" class="nav-link">About Pneumonia</a>
+                <a href="doctors.html" class="nav-link">Connect with Doctor</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Predict Page Content -->
+    <div class="page active">
+        <div class="container">
+            <h1>Pneumonia Risk Assessment</h1>
+            <p>Upload your chest X-ray and provide health information for AI-powered pneumonia detection.</p>
+
+            <!-- X-ray Upload Section -->
+            <div class="upload-section">
+                <h2>Upload Chest X-ray</h2>
+                <div class="upload-area" onclick="document.getElementById('xray-upload').click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click to upload or drag and drop your X-ray image</p>
+                    <small>Supported formats: JPG, PNG, DICOM (Max 10MB)</small>
+                </div>
+                <input type="file" id="xray-upload" accept="image/*,.dcm" style="display: none;" onchange="handleFileUpload(this)">
+                <div id="upload-preview" class="upload-preview" style="display: none;"></div>
+            </div>
+
+            <!-- Health Information Form -->
+            <div class="form-section">
+                <h2>Health Information</h2>
+                <form id="health-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" name="age" min="1" max="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Smoking History</label>
+                            <select name="smoking" required>
+                                <option value="">Select Option</option>
+                                <option value="never">Never Smoked</option>
+                                <option value="former">Former Smoker</option>
+                                <option value="current">Current Smoker</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Alcohol Consumption</label>
+                            <select name="alcohol" required>
+                                <option value="">Select Option</option>
+                                <option value="none">None</option>
+                                <option value="occasional">Occasional</option>
+                                <option value="regular">Regular</option>
+                                <option value="heavy">Heavy</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pre-existing Conditions</label>
+                            <select name="conditions" required>
+                                <option value="">Select Option</option>
+                                <option value="none">None</option>
+                                <option value="diabetes">Diabetes</option>
+                                <option value="heart">Heart Disease</option>
+                                <option value="lung">Lung Disease</option>
+                                <option value="multiple">Multiple Conditions</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Symptom Description</label>
+                        <textarea name="symptoms" rows="4" placeholder="Please describe any symptoms you're experiencing (cough, fever, chest pain, difficulty breathing, etc.)"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Analyze Button -->
+            <div class="analyze-section">
+                <button class="btn btn-primary btn-large" onclick="analyzeRisk()">Analyze Risk</button>
+            </div>
+
+            <!-- Medical Disclaimer -->
+            <div class="disclaimer">
+                <h3>Important Medical Disclaimer</h3>
+                <p>This tool is for educational purposes only and should not replace professional medical advice. Always consult with a healthcare provider for proper diagnosis and treatment.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-lungs"></i>
+                        <span>PulmoScan</span>
+                    </div>
+                    <p>Advanced pneumonia detection and comprehensive respiratory care.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="predict.html">Predict Pneumonia</a></li>
+                        <li><a href="about.html">About Pneumonia</a></li>
+                        <li><a href="doctors.html">Find Doctors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Phone: 9347924554</p>
+                    <p>Email: support@PulmoScan.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PulmoScan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
